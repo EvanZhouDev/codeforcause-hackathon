@@ -1,4 +1,4 @@
-export default {
+export default icons = {
   Outlined: ({ name }) => {
     return <span className="material-symbols-outlined">{name}</span>;
   },
