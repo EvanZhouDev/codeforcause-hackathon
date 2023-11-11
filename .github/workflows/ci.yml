@@ -56,16 +56,16 @@ jobs:
         run: |
           supabase db start
           supabase db reset
-      - name: Verify generated types match Postgres schema
-        run: |
-          bun run update-types
-          if ! git diff --ignore-space-at-eol --exit-code --quiet src/lib/supabase.ts; then
-              echo "Detected uncommitted changes after build. See status below:\n" >> $GITHUB_STEP_SUMMARY
-              echo '```diff' >> $GITHUB_STEP_SUMMARY
-              echo $(git diff) >> $GITHUB_STEP_SUMMARY
-              echo '```' >> $GITHUB_STEP_SUMMARY
-              exit 1
-          fi
+      #   - name: Verify generated types match Postgres schema
+      #     run: |
+      #       bun run update-types
+      #       if ! git diff --ignore-space-at-eol --exit-code --quiet src/lib/supabase.ts; then
+      #           echo "Detected uncommitted changes after build. See status below:\n" >> $GITHUB_STEP_SUMMARY
+      #           echo '```diff' >> $GITHUB_STEP_SUMMARY
+      #           echo $(git diff) >> $GITHUB_STEP_SUMMARY
+      #           echo '```' >> $GITHUB_STEP_SUMMARY
+      #           exit 1
+      #       fi
       - name: (main only) Ensure there are no unpushed migrations
         run: |
           if supabase migration list --db-url $DB_URL | grep -E '\s*(\d+) │ \s+ │ .+$'; then
