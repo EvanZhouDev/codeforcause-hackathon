@@ -1,4 +1,6 @@
-import Icon from "./components/icon.jsx"
+"use client";
+import Icon from "./components/icon.jsx";
+
 export default function Home() {
   // return a good variety of 10 different daisy ui components like buttons, sliders, toggles, and more, all laid out so i can see if my color theme is good
   return (
@@ -7,9 +9,7 @@ export default function Home() {
         <span class="material-symbols-outlined">house</span>
         Filled
       </a>
-      <a class="btn btn-clear mx-1">
-        Clear
-      </a>
+      <a class="btn btn-clear mx-1">Clear</a>
       <a class="btn btn-ghost mx-1">
         <Icon.Rounded name="mail" />
         Outline
@@ -23,5 +23,5 @@ export default function Home() {
         Shadow
       </a>
     </>
-  )
+  );
 }
