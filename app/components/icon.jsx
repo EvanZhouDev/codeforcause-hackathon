@@ -1,11 +1,13 @@
+import * as SolidIcons from '@heroicons/react/24/solid'
+import * as OutlineIcons from '@heroicons/react/24/outline'
+let getIconID = (name) => name.charAt(0).toUpperCase() + name.slice(1) + "Icon";
 export default {
-    Outlined: ({ name }) => {
-        return <span class="material-symbols-outlined">{name}</span>
+    Outlined: ({ name, className }) => {
+        let OutlineIcon = OutlineIcons[getIconID(name)];
+        return <OutlineIcon className={`w-6 h-6 ${className} stroke-2`} />;
     },
-    Rounded: ({ name }) => {
-        return <span class="material-symbols-rounded">{name}</span>
-    },
-    Sharp: ({ name }) => {
-        return <span class="material-symbols-sharp">{name}</span>
+    Solid: ({ name, className }) => {
+        let SolidIcon = SolidIcons[getIconID(name)];
+        return <SolidIcon className={`w-6 h-6 ${className}`} />;
     },
 }
