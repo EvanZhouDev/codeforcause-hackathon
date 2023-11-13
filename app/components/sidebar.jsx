@@ -18,7 +18,7 @@ function SidebarSelection({ href, children, icon }) {
 
 export default function Sidebar() {
     return (
-        <ul className="menu flex justify-between">
+        <ul className="main-menu flex justify-between">
             <div>
                 <li className="website-title">Project CH20</li>
                 <a className="btn btn-shadow h-16 !mb-2 !rounded-3xl">

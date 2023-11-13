@@ -50,8 +50,8 @@
 	@apply !ml-1 !my-5 !mt-2 !mb-2 font-bold text-primary text-2xl;
 }
 
-.menu {
-	@apply bg-neutral rounded-l h-screen w-[18%] px-5 rounded-box;
+.main-menu {
+	@apply menu bg-neutral rounded-l h-screen w-[18%] px-5 rounded-box;
 	
 	* {
 		@apply my-0.5;
