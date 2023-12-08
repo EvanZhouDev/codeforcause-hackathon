@@ -4,8 +4,9 @@ import Icon from "./icon.jsx"
 import { useState, useRef } from "react"
 
 function Form({ children }) {
+    "use client"
     return (
-        <form class="space-y-4 ml-10">
+        <form className="space-y-4 ml-10">
             {children}
         </form>
     )
@@ -14,11 +15,11 @@ function Form({ children }) {
 Form.PasswordInput = function PasswordInput({ title = "Password", placeholder = "Enter password...", id }) {
     return (
         <div>
-            <label class="label">
-                <span class="text-base label-text">{title}</span>
+            <label className="label">
+                <span className="text-base label-text">{title}</span>
             </label>
             <input type="password" id={id} placeholder={placeholder}
-                class="w-full input input-bordered border-primary form-input" />
+                className="w-full input input-bordered border-primary form-input" />
         </div>
     )
 }
@@ -26,11 +27,11 @@ Form.PasswordInput = function PasswordInput({ title = "Password", placeholder = 
 Form.TextInput = function TextInput({ title = "Text", placeholder = "Enter text...", id }) {
     return (
         <div>
-            <label class="label">
-                <span class="text-base label-text">{title}</span>
+            <label className="label">
+                <span className="text-base label-text">{title}</span>
             </label>
             <input type="text" id={id} placeholder={placeholder}
-                class="w-full input input-bordered border-primary form-input" />
+                className="w-full input input-bordered border-primary form-input" />
         </div>
     )
 }
@@ -40,14 +41,14 @@ Form.Dropdown = function Dropdown({ title = "Dropdown", elements = ["Alice", "Bo
 
     return (
         <div className="dropdown w-full">
-            <label class="label">
-                <span class="text-base label-text">{title}</span>
+            <label className="label">
+                <span className="text-base label-text">{title}</span>
             </label>
-            <label tabindex="0" class="btn w-full flex justify-start bg-secondary border-primary hover:bg-secondary hover:border-secondary form-input" id={id}>
+            <label tabIndex="0" className="btn w-full flex justify-start bg-secondary border-primary hover:bg-secondary hover:border-secondary form-input" id={id}>
                 <Icon.Outlined name="chevronDown" />
                 {elements[selected]}
             </label>
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow rounded-box w-full mt-1 bg-neutral">
+            <ul tabIndex="0" className="dropdown-content z-[1] menu p-2 shadow rounded-box w-full mt-1 bg-neutral">
                 {elements.map((element, index) => {
                     return (
                         <li key={index} className="py-0.5">
@@ -81,7 +82,7 @@ Form.Submit = function Submit({ title = "Submit" }) {
     };
 
     return (
-        <button class="btn btn-primary w-full" onClick={handleSubmit} ref={buttonRef}>
+        <button className="btn btn-primary w-full" onClick={handleSubmit} ref={buttonRef}>
             {title}
         </button>
     );
