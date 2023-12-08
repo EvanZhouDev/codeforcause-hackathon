@@ -6,7 +6,8 @@
 		"start": "next start",
 		"format": "biome format . --write",
 		"lint": "biome lint .",
-		"fix": "biome check --apply ."
+		"fix": "biome check --apply .",
+		"fix-unsafe": "biome check --apply-unsafe ."
 	},
 	"dependencies": {
 		"@mantine/carousel": "^7.3.1",
