@@ -23,10 +23,6 @@ const Form = ({ initialValues, validate, onSubmit, children }) => (
 		}) => (
 			<form onSubmit={handleSubmit}>
 				{React.Children.map(children, (child) => {
-					{
-						/* if (child.type === Form.TextInput) { */
-					}
-					console.log(child.props.formid);
 					return (
 						<div>
 							{React.cloneElement(child, {
@@ -41,7 +37,7 @@ const Form = ({ initialValues, validate, onSubmit, children }) => (
 						</div>
 					);
 				})}
-				<button class="btn btn-primary" disabled={isSubmitting} type="submit">
+				<button className="btn btn-primary" disabled={isSubmitting} type="submit">
 					Submit
 				</button>
 			</form>
@@ -58,8 +54,8 @@ Form.PasswordInput = function PasswordInput({
 }) {
 	return (
 		<div>
-			<label class="label">
-				<span class="text-base label-text">{title}</span>
+			<label className="label">
+				<span className="text-base label-text">{title}</span>
 			</label>
 			<input
 				type="password"
@@ -67,7 +63,7 @@ Form.PasswordInput = function PasswordInput({
 				onChange={handleChange}
 				placeholder={placeholder}
 				name={formid}
-				class="w-full input input-bordered border-primary form-input"
+				className="w-full input input-bordered border-primary form-input"
 			/>
 			{/* {errors.email && touched.email && errors.email} */}
 		</div>
@@ -84,17 +80,17 @@ Form.TextInput = function TextInput({
 }) {
 	return (
 		<div>
-			<label class="label">
-				<span class="text-base label-text">{title}</span>
+			<label className="label">
+				<span className="text-base label-text">{title}</span>
 			</label>
 			<input
 				type="text"
 				value={value}
 				onChange={handleChange}
-				onblur={handleBlur}
+				onBlur={handleBlur}
 				name={formid}
 				placeholder={placeholder}
-				class="w-full input input-bordered border-primary form-input"
+				className="w-full input input-bordered border-primary form-input"
 			/>
 		</div>
 	);
