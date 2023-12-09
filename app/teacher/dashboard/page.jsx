@@ -1,5 +1,6 @@
 import Icon from "@/components/Icon";
 import StudentTable from "./components/StudentTable"
+import ClassTable from "./components/ClassTable"
 export default async function Index() {
     return (
         <div className="w-fill h-screen bg-secondary overflow-hidden">
@@ -27,7 +28,7 @@ export default async function Index() {
                         <input type="radio" name="my_tabs_2" role="tab" className="tab min-w-[15vw]" aria-label="Manage Classes" />
                         <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
                             <div className="min-h-[calc(90vh-78px)]">
-                                <StudentTable />
+                                <ClassTable />
                             </div>
                         </div>
                     </div>
