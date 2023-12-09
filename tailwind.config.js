@@ -25,17 +25,17 @@ module.exports = {
 	plugins: [require("daisyui")],
 	daisyui: {
 		themes: [
-		  {
-			materialYou: {
-			  primary: "#4f6630",
-			  "primary-content": "#ffffff",
-			  secondary: "#dfe6cf",
-			  "secondary-content": "#46483F",
-			  neutral: "#f5f4ec",
-			  "base-100": "#fefcf7",
-			}
-		  },
-		  "light"
-		]
-	  }
+			{
+				materialYou: {
+					primary: "#4f6630",
+					"primary-content": "#ffffff",
+					secondary: "#dfe6cf",
+					"secondary-content": "#46483F",
+					neutral: "#f5f4ec",
+					"base-100": "#fefcf7",
+				},
+			},
+			"light",
+		],
+	},
 };
