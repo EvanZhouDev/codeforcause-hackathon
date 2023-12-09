@@ -1,7 +1,19 @@
 import Icon from "@/components/Icon";
-import StudentTable from "./components/StudentTable"
-import ClassTable from "./components/ClassTable"
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
+
 export default async function Index() {
+	const cookieStore = cookies();
+	const client = createClient(cookieStore);
+
+	const { data: classes, error } = await client
+		.from("classes")
+		.select("name")
+		.eq("admin", (await client.auth.getUser()).data.user.id);
+	if (error) {
+		console.log(error);
+		return <p>An error occured</p>;
+	}
     return (
         <div className="w-fill h-screen bg-secondary overflow-hidden">
             {/* class list and management */}
@@ -15,9 +27,12 @@ export default async function Index() {
                             <div className="min-h-[calc(90vh-78px)]">
                                 <div className="flex">
                                     <select className="select select-bordered">
-                                        <option disabled selected>Pick a class...</option>
-                                        <option>Class 1</option>
-                                        <option>Class 2</option>
+										<option disabled selected>
+											Pick a class...
+										</option>
+										{classes.map((x) => (
+											<option>{x.name}</option>
+										))}
                                     </select>
                                     {/* <button className="ml-2 btn btn-ghost"><Icon.Solid name="AdjustmentsHorizontal" /></button> */}
                                 </div>
