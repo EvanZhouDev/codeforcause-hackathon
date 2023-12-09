@@ -60,8 +60,8 @@ export default async function Index() {
 								<tr>
 									<th />
 									<th>Name</th>
-									<th>Job</th>
-									<th>Favorite Color</th>
+									<th>Time Joined</th>
+									<th>Status</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -69,22 +69,22 @@ export default async function Index() {
 								<tr>
 									<th>1</th>
 									<td>Cy Ganderton</td>
-									<td>Quality Control Specialist</td>
-									<td>Blue</td>
+									<td>4:30</td>
+									<td>Present</td>
 								</tr>
 								{/* row 2 */}
 								<tr>
 									<th>2</th>
 									<td>Hart Hagerty</td>
-									<td>Desktop Support Technician</td>
-									<td>Purple</td>
+									<td>4:31</td>
+									<td>Present</td>
 								</tr>
 								{/* row 3 */}
 								<tr>
 									<th>3</th>
 									<td>Brice Swyre</td>
-									<td>Tax Accountant</td>
-									<td>Red</td>
+									<td>4:32</td>
+									<td>Absent</td>
 								</tr>
 							</tbody>
 						</table>
