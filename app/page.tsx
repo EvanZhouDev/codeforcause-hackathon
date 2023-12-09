@@ -75,21 +75,19 @@ export default async function Index({
 		return redirect("/?message=Check email to continue sign in process");
 	};
 	return (
-		<div className="hero min-h-screen bg-base-200">
+		<div className="hero min-h-screen bg-neutral">
 			<div className="hero-content text-center">
 				<div className="max-w-md">
 					<h1 className="text-5xl font-bold">Hello there</h1>
 					<p className="py-6">
-						Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-						excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-						a id nisi.
+						Sign in or sign up to start taking attendance.
 					</p>
 					<div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2 text-left">
 						<form
 							className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
 							action={signIn}
 						>
-							<label className="text-md" htmlFor="email">
+							{/* <label className="text-md" htmlFor="email">
 								Email
 							</label>
 							<input
@@ -97,28 +95,38 @@ export default async function Index({
 								name="email"
 								placeholder="you@example.com"
 								required
-							/>
-							<label className="text-md" htmlFor="password">
-								Password
-							</label>
-							<input
-								className="rounded-md px-4 py-2 bg-inherit border mb-6"
-								type="password"
-								name="password"
-								placeholder="••••••••"
-								required
-							/>
-							<button className="bg-green-700 rounded-md px-4 py-2 text-foreground mb-2">
+							/> */}
+							<div>
+								<label className="label">
+									<span className="text-base label-text">Email</span>
+								</label>
+								<input
+									type="email"
+									name="email"
+									className="w-full input input-bordered border-primary form-input"
+								/>
+							</div>
+							<div>
+								<label className="label">
+									<span className="text-base label-text">Password</span>
+								</label>
+								<input
+									type="password"
+									name="password"
+									className="w-full input input-bordered border-primary form-input"
+								/>
+							</div>
+							<button className="btn btn-filled !rounded-lg mt-5">
 								Sign In
 							</button>
 							<button
 								formAction={signUp}
-								className="border border-foreground/20 rounded-md px-4 py-2 text-foreground mb-2"
+								className="btn btn-ghost !rounded-lg"
 							>
 								Sign Up
 							</button>
 							{searchParams?.message && (
-								<p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
+								<p className="mt-4 p-4 bg-foreground/10 text-foreground text-center rounded-lg">
 									{searchParams.message}
 								</p>
 							)}
