@@ -45,10 +45,10 @@ export default async function Index({
 		});
 
 		if (error) {
-			return redirect("/login?message=Could not authenticate user");
+			return redirect("/?message=Could not authenticate user");
 		}
 
-		return redirect("/");
+		return redirect("/teacher/dashboard");
 	};
 
 	const signUp = async (formData: FormData) => {
@@ -69,10 +69,10 @@ export default async function Index({
 		});
 
 		if (error) {
-			return redirect("/login?message=Could not authenticate user");
+			return redirect("/?message=Could not authenticate user");
 		}
 
-		return redirect("/login?message=Check email to continue sign in process");
+		return redirect("/?message=Check email to continue sign in process");
 	};
 	return (
 		<div className="hero min-h-screen bg-base-200">
@@ -127,11 +127,5 @@ export default async function Index({
 				</div>
 			</div>
 		</div>
-		// <div>
-		// 	<Link href="/login">logn</Link>
-		// 	{/* <button className="btn btn-filled">hi this is a button</button>
-		// 	<button className="btn btn-primary">hi this is a button</button>
-		// 	<TestForm /> */}
-		// </div>
 	);
 }

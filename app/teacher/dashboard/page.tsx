@@ -9,7 +9,7 @@ export default async function Page() {
 	const cookieStore = cookies();
 	const client = createClient(cookieStore);
 	if ((await client.auth.getUser()).data?.user?.id == null) {
-		return redirect("/login");
+		return redirect("/");
 	}
 	const { data: classes, error } = await client
 		.from("classes")

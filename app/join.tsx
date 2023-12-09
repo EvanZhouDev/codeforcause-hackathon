@@ -12,7 +12,7 @@ export default async function Join({
 	const client = createClient(cookieStore);
 	const student = (await client.auth.getUser()).data?.user?.id;
 	if (student == null) {
-		return redirect("/login");
+		return redirect("/");
 	}
 	if (searchParams.code == null) {
 		return <p>Invalid code</p>;
