@@ -14,7 +14,7 @@ export default async function Dashboard({
 			{/* class list and management */}
 			{/* button to start the attendance page */}
 			{/* class */}
-			<div className="w-full flex flex-row justify-center h-full mt-[4vh]">
+			<div className="w-full flex flex-row justify-center h-full mt-[8.5vh]">
 				<div className=" w-[48.5%] mr-[0.5%] h-[90vh]overflow-hidden">
 					<div role="tablist" className="tabs tabs-lifted">
 						<input

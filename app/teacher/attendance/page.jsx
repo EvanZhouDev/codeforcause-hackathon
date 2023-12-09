@@ -7,7 +7,7 @@ export default async function Index() {
 			{/* button to start the attendance page */}
 			{/* class */}
 			{/* <h1 className="website-title !text-3xl">Attendance for Class 1</h1> */}
-			<div className="w-full flex flex-row justify-center h-full mt-[4vh]">
+			<div className="w-full flex flex-row justify-center h-full mt-[8.5vh]">
 				<div className="bg-base-100 outline outline-1 outline-[#CAC8C5] w-[48.5%] mr-[0.5%] h-[90vh] rounded-xl flex flex-col justify-around items-center">
 					<div className="flex flex-col items-center">
 						<p className="text-3xl mt-2 font text-primary mb-10">
