@@ -1,6 +1,8 @@
 import Icon from "@/components/Icon";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
+import StudentTable from "./components/StudentTable";
+import ClassTable from "./components/ClassTable";
 
 export default async function Index() {
 	const cookieStore = cookies();
