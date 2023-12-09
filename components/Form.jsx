@@ -37,7 +37,11 @@ const Form = ({ initialValues, validate, onSubmit, children }) => (
 						</div>
 					);
 				})}
-				<button className="btn btn-primary" disabled={isSubmitting} type="submit">
+				<button
+					className="btn btn-primary"
+					disabled={isSubmitting}
+					type="submit"
+				>
 					Submit
 				</button>
 			</form>
