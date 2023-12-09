@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Icon from "@/components/Icon.jsx";
 
 function SidebarSelection({ href, children, icon }) {
-	let active = href === usePathname();
+	const active = href === usePathname();
 	return (
 		<li>
 			<a href={href} className={active ? "menu-selection-active" : ""}>

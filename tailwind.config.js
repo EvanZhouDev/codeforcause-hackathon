@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const autoprefixer = require('autoprefixer');
-const tailwindNesting = require('tailwindcss/nesting');
+const autoprefixer = require("autoprefixer");
+const tailwindNesting = require("tailwindcss/nesting");
 
 module.exports = {
 	content: [

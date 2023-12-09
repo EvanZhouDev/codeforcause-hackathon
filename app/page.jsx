@@ -1,11 +1,11 @@
 import ConnectSupabaseSteps from "@/components/ConnectSupabaseSteps";
 import Header from "@/components/Header";
 import SignUpUserSteps from "@/components/SignUpUserSteps";
+import TestForm from "@/components/TestForm";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import AuthButton from "../components/AuthButton";
 import DeployButton from "../components/DeployButton";
-import TestForm from "@/components/TestForm"
 
 export default async function Index() {
 	const cookieStore = cookies();
@@ -27,7 +27,7 @@ export default async function Index() {
 		<div>
 			<button className="btn btn-filled">hi this is a button</button>
 			<button className="btn btn-primary">hi this is a button</button>
-			<TestForm/>
+			<TestForm />
 		</div>
 	);
 }
