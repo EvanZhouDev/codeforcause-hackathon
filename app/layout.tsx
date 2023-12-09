@@ -19,10 +19,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className={GeistSans.className}>
-			<body className="flex flex-row">
-				<Sidebar />
-				{children}
-			</body>
+			<body className="flex flex-row">{children}</body>
 		</html>
 	);
 }
