@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+const autoprefixer = require('autoprefixer');
+const tailwindNesting = require('tailwindcss/nesting');
+
 module.exports = {
 	content: [
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -22,7 +25,7 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require("daisyui")],
+	plugins: [tailwindNesting(), autoprefixer(), require("daisyui")],
 	daisyui: {
 		themes: [
 			{
