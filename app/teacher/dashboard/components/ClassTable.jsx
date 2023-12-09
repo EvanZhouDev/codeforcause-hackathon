@@ -1,6 +1,6 @@
 import Icon from "@/components/Icon";
 export default function ClassTable() {
-	let data = {};
+	const data = {};
 	return (
 		<div className="overflow-x-auto">
 			<table className="table mt-5">

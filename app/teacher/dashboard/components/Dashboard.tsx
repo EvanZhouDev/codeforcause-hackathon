@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
-import StudentTable from "./StudentTable";
 import Icon from "@/components/Icon";
+import { useState } from "react";
 import ClassTable from "./ClassTable";
+import StudentTable from "./StudentTable";
 
 export default async function Dashboard({
 	classes,
