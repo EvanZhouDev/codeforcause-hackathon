@@ -1,5 +1,5 @@
 import { GeistSans } from "geist/font/sans";
-import Sidebar from "../components/Sidebar.jsx";
+import Navbar from "@/components/Navbar.jsx";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -17,10 +17,11 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+
 	return (
 		<html lang="en" className={GeistSans.className}>
-			<body className="flex flex-row">
-				<Sidebar />
+			<body>
+				<Navbar />
 				{children}
 			</body>
 		</html>
