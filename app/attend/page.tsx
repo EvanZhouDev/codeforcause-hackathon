@@ -29,9 +29,6 @@ export default async function Page({ searchParams }) {
 				<div className="max-w-md">
 					<h1 className="text-5xl font-bold">You're all done.</h1>
 					<p className="mt-5">Joined with code "{searchParams.code}"</p>
-					<p className="py-6 max-w">
-						Not actually here? Select a reason and change your status.
-					</p>
 					<Excuse code={searchParams.code} user={studentId} />
 				</div>
 			</div>
