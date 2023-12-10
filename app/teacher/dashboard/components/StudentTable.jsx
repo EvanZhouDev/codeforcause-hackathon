@@ -1,5 +1,6 @@
 import Icon from "@/components/Icon";
-export default function StudentTable({ data }) {
+// import { getStudentData } from "../actions";
+export default async function StudentTable({ data }) {
 	return (
 		<div className="overflow-x-auto">
 			<table className="table mt-5">
