@@ -18,7 +18,7 @@ export default function RegisterStudent() {
                                 Scan code to join the class.
                             </p>
                             <QRCodeSVG
-                                value="http://localhost:3000/joinClass?code=1234"
+                                value="http://localhost:3000/join?code=1234"
                                 renderAs="svg"
                                 size="1000"
                                 className="w-3/5 h-min bg-black mb-5"

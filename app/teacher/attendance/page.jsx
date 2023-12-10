@@ -14,7 +14,7 @@ export default async function Index() {
 							Scan code to mark attendance.
 						</p>
 						<QRCodeSVG
-							value="http://localhost:3000/join?code=hi"
+							value="http://localhost:3000/attend?code=hi"
 							renderAs="svg"
 							size="1000"
 							className="w-3/5 h-min bg-black mb-5"

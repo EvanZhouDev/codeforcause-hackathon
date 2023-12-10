@@ -17,7 +17,11 @@ export default function Navbar() {
             name: "Main Page",
             icon: "Clipboard",
         },
-        "/student": {
+        "/join": {
+            name: "Joining Class",
+            icon: "User",
+        },
+        "/attend": {
             name: "Mark Attendance",
             icon: "Clipboard",
         },
