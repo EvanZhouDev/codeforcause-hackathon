@@ -3,6 +3,7 @@ import Icon from "@/components/Icon";
 import { useEffect, useState } from "react";
 import ClassTable from "./ClassTable";
 import StudentTable from "./StudentTable";
+import RegisterStudent from "./RegisterStudent";
 
 // import { createClass, getStudentData } from "../actions";
 import NewClass from "./NewClass";
@@ -67,12 +68,7 @@ export default function Dashboard({
 											<option value={x.id}>{x.name}</option>
 										))}
 									</select>
-									{/* <form action={registerStudent}> */}
-									<button className="ml-2 btn btn-ghost">
-										<Icon.Outlined name="User" />
-										Register Students
-									</button>
-									{/* </form> */}
+									<RegisterStudent />
 								</div>
 								<h1 className="website-title pt-5 !-pt-2">
 									Students Registered in Class 1
@@ -103,10 +99,13 @@ export default function Dashboard({
 					</div>
 				</div>
 				<div className="bg-base-100 outline outline-1 outline-[#CAC8C5] w-[48.5%] ml-[0.5%] h-[90vh] rounded-xl">
-					<button className="btn btn-shadow ml-[5%] h-[10%] w-[90%] !flex !flex-row !justify-center !items-center text-3xl mt-5">
+					<a
+						className="btn btn-shadow ml-[5%] h-[10%] w-[90%] !flex !flex-row !justify-center !items-center text-3xl mt-5"
+						href="/teacher/attendance"
+					>
 						<Icon.Outlined className="!w-10 !h-10" name="UserGroup" />
 						Start Attendance
-					</button>
+					</a>
 					<div className="ml-[5%] mt-5">
 						<h1 className="website-title !text-2xl !text-secondary-content">
 							Configure Your Attendance Session:

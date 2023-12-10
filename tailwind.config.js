@@ -27,6 +27,7 @@ module.exports = {
 	},
 	plugins: [tailwindNesting(), autoprefixer(), require("daisyui")],
 	daisyui: {
+		darkTheme: "materialYouDark",
 		themes: [
 			{
 				materialYou: {
@@ -37,8 +38,15 @@ module.exports = {
 					neutral: "#f5f4ec",
 					"base-100": "#fefcf7",
 				},
-			},
-			"light",
+				materialYouDark: {
+					primary: "#A4C77D",
+					"primary-content": "#1D3700",
+					secondary: "#424937",
+					"secondary-content": "#DDE6CD",
+					neutral: "#22261D",
+					"base-100": "#1B1C18",
+				}
+			}
 		],
 	},
 };
