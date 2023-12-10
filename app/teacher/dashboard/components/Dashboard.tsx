@@ -13,7 +13,7 @@ export default function Dashboard({
 	classes,
 }: { classes: { name: string; id: string }[] }) {
 	const supabase = createClient();
-	const [selectedClass, setSelectedClass] = useState(classes[0].id);
+	const [selectedClass, setSelectedClass] = useState(classes[0]?.id);
 	const [studentData, setStudentData] = useState([
 		{
 			email: "bob.joe@gmail.com",
