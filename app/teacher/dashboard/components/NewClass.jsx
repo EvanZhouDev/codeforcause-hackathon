@@ -10,6 +10,7 @@ export default function NewClass() {
 			modal.current.close();
 		}
 	};
+	console.log("asdf");
 	const modal = useRef();
 	return (
 		<>

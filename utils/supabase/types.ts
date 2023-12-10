@@ -11,21 +11,21 @@ export interface Database {
     Tables: {
       attendance: {
         Row: {
-          code_used: number
+          code_used: string
           created_at: string
           metadata: Json | null
           status: number
           student: string
         }
         Insert: {
-          code_used: number
+          code_used: string
           created_at?: string
           metadata?: Json | null
           status?: number
           student: string
         }
         Update: {
-          code_used?: number
+          code_used?: string
           created_at?: string
           metadata?: Json | null
           status?: number
@@ -37,7 +37,7 @@ export interface Database {
             columns: ["code_used"]
             isOneToOne: false
             referencedRelation: "codes"
-            referencedColumns: ["id"]
+            referencedColumns: ["code"]
           },
           {
             foreignKeyName: "attendance_student_fkey"
@@ -85,6 +85,7 @@ export interface Database {
           class: number
           code: string
           created_at: string
+          expired: boolean
           expires_at: string | null
           id: number
         }
@@ -92,6 +93,7 @@ export interface Database {
           class: number
           code?: string
           created_at?: string
+          expired?: boolean
           expires_at?: string | null
           id?: number
         }
@@ -99,6 +101,7 @@ export interface Database {
           class?: number
           code?: string
           created_at?: string
+          expired?: boolean
           expires_at?: string | null
           id?: number
         }
@@ -108,6 +111,35 @@ export interface Database {
             columns: ["class"]
             isOneToOne: false
             referencedRelation: "classes"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          username: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id: string
+          username: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          username?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]
@@ -140,7 +172,7 @@ export interface Database {
             foreignKeyName: "students_student_fkey"
             columns: ["student"]
             isOneToOne: false
-            referencedRelation: "users"
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           }
         ]

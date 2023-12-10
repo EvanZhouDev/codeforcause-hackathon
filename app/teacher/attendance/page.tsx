@@ -9,6 +9,7 @@ export default async function Index({
 	searchParams: { classId: string };
 }) {
 	"use server";
+	// TODO: if there exists an exising code, use it
 	const cookieStore = cookies();
 	const client = createClient(cookieStore);
 	if ((await client.auth.getUser()).data?.user?.id == null) {
@@ -29,12 +30,25 @@ export default async function Index({
 		console.log("ed", data, error);
 		return redirect("/teacher/dashboard");
 	}
-	const { data, error } = await client
+	let code;
+	let codeId;
+	const { data, error: __ } = await client
 		.from("codes")
-		.insert([{ class: searchParams.classId }])
-		.select();
-	const code = data[0].code;
-	console.log(data, error);
+		.select()
+		.eq("class", searchParams.classId)
+		.eq("expired", false);
+	// Todo: using the same code
+	if (data?.length !== 1) {
+		const { data, error: _ } = await client
+			.from("codes")
+			.insert([{ class: searchParams.classId }])
+			.select();
+		code = data![0].code;
+		codeId = data![0].id;
+	} else {
+		code = data[0].code;
+		codeId = data![0].id;
+	}
 
 	return (
 		<div className="w-fill h-screen bg-secondary overflow-hidden">
@@ -66,7 +80,7 @@ export default async function Index({
 				<div className="bg-base-100 outline outline-1 outline-[#CAC8C5] w-[48.5%] ml-[0.5%] h-[90vh] rounded-xl">
 					<div className="flex flex-row justify-between px-4 mt-4">
 						<h1 className="website-title !text-5xl">Students</h1>
-						<form action={handle.bind(null, data[0].id)}>
+						<form action={handle.bind(null, codeId)}>
 							<button className="btn btn-primary">End Session</button>
 						</form>
 					</div>
