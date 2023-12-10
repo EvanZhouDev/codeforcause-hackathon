@@ -101,7 +101,7 @@ export default function Dashboard({
 				<div className="bg-base-100 outline outline-1 outline-[#CAC8C5] w-[48.5%] ml-[0.5%] h-[90vh] rounded-xl">
 					<a
 						className="btn btn-shadow ml-[5%] h-[10%] w-[90%] !flex !flex-row !justify-center !items-center text-3xl mt-5"
-						href="/teacher/attendance"
+						href={`/teacher/attendance?classId=${selectedClass}`}
 					>
 						<Icon.Outlined className="!w-10 !h-10" name="UserGroup" />
 						Start Attendance
