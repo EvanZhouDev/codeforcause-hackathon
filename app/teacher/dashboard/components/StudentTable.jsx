@@ -9,8 +9,8 @@ export default async function StudentTable({ classId }) {
 		.from("students")
 		.select("student (username, email)")
 		.eq("class", classId);
-	console.log("kayl", res.data[0].student, res, res.error);
-	const data = res.data.map((x) => {
+	console.log(res);
+	const data = (res.data ?? []).map((x) => {
 		return { email: x.student.email, name: x.student.username };
 	});
 	console.log(data);

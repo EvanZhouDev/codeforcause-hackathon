@@ -13,7 +13,9 @@ export default function Dashboard({
 	classes,
 }: { classes: { name: string; id: number }[] }) {
 	const supabase = createClient();
-	const [selectedClass, setSelectedClass] = useState(classes[0]?.id);
+	const [selectedClass, setSelectedClass] = useState(0);
+	const classId = classes[selectedClass].id;
+	const className = classes[selectedClass].name;
 	const [studentData, setStudentData] = useState([
 		{
 			email: "bob.joe@gmail.com",
@@ -56,7 +58,7 @@ export default function Dashboard({
 											const res = await client
 												.from("students")
 												.select("profiles (username)")
-												.eq("class", event.target.value);
+												.eq("class", classes[event.target.value]);
 											console.log(res); // rls issues?
 											setStudentData(res.data);
 										}}
@@ -64,16 +66,16 @@ export default function Dashboard({
 										<option disabled defaultValue={""}>
 											Pick a class...
 										</option>
-										{classes.map((x) => (
-											<option value={x.id}>{x.name}</option>
+										{classes.map((x, i) => (
+											<option value={i}>{x.name}</option>
 										))}
 									</select>
-									<RegisterStudent classId={selectedClass} />
+									<RegisterStudent classId={classId} />
 								</div>
 								<h1 className="website-title pt-5 !-pt-2">
-									Students Registered in Class 1
+									Students Registered in {className}
 								</h1>
-								<StudentTable classId={selectedClass} />
+								<StudentTable classId={classId} />
 							</div>
 						</div>
 						<input

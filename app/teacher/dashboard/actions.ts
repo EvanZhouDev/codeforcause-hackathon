@@ -22,6 +22,10 @@ export async function addStudent(classId, form: FormData) {
 		.from("profiles")
 		.select("id")
 		.eq("email", form.get("email"));
+	if (data?.length == null) {
+		console.error("account non existing");
+		return;
+	}
 	const res = await client
 		.from("students")
 		.insert([{ class: classId, student: data[0].id }])
