@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 export default async function Join({
 	searchParams,
 }: {
-	searchParams: { code: string };
+	searchParams: { class: number };
 }) {
 	const cookieStore = cookies();
 	const client = createClient(cookieStore);
@@ -14,33 +14,16 @@ export default async function Join({
 	if (student == null) {
 		return redirect("/");
 	}
-	if (searchParams.code == null) {
-		return <p>Invalid code</p>;
+
+	const { data, error } = await client
+		.from("students")
+		.insert([{ student, class: searchParams.class }])
+		.select();
+
+	if (error || data == null) {
+		return <p>An error has occured</p>;
 	}
 
-	const res = await client
-		.from("codes")
-		.select("id")
-		.eq("code", searchParams.code);
-	if (res.error) {
-		return <p>Could not fetch codes</p>;
-	}
-	const data = res.data!;
-	if (data.length !== 1) {
-		return <p>Invalid code</p>;
-	}
-	const codeId = data[0].id;
-	{
-		const { data, error } = await client
-			.from("attendance")
-			.insert([
-				{ student, code_used: codeId, status: ATTENDENCE_STATUS_PRESENT },
-			])
-			.select();
-		if (error || data == null) {
-			return <p>An error has occured</p>;
-		}
-	}
 	return (
 		<div className="hero min-h-screen bg-neutral">
 			<div className="hero-content text-center">

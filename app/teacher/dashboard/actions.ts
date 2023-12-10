@@ -14,6 +14,20 @@ export async function getStudentData(classID: string) {
 	console.log(res); // rls issues?
 	return res;
 }
+export async function addStudent(classId, form: FormData) {
+	console.log("added", form.get("email"));
+	const cookieStore = cookies();
+	const client = createClient(cookieStore);
+	const { data, error } = await client
+		.from("profiles")
+		.select("id")
+		.eq("email", form.get("email"));
+	const res = await client
+		.from("students")
+		.insert([{ class: classId, student: data[0].id }])
+		.select();
+	console.log(error, data, res);
+}
 export async function createClass(className: string) {
 	const cookieStore = cookies();
 	const client = createClient(cookieStore);

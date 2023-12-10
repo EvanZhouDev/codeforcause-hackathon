@@ -11,9 +11,7 @@ import { getStudentData } from "../actions";
 import { createClient } from "@/utils/supabase/client";
 export default function Dashboard({
 	classes,
-}: {
-	classes: { name: string; id: string }[];
-}) {
+}: { classes: { name: string; id: number }[] }) {
 	const supabase = createClient();
 	const [selectedClass, setSelectedClass] = useState(classes[0]?.id);
 	const [studentData, setStudentData] = useState([
@@ -52,7 +50,7 @@ export default function Dashboard({
 										value={selectedClass}
 										onChange={async (event) => {
 											console.log("asdfsdfsa");
-											setSelectedClass(event.target.value);
+											setSelectedClass(parseInt(event.target.value));
 
 											const client = createClient();
 											const res = await client
@@ -70,12 +68,12 @@ export default function Dashboard({
 											<option value={x.id}>{x.name}</option>
 										))}
 									</select>
-									<RegisterStudent />
+									<RegisterStudent classId={selectedClass} />
 								</div>
 								<h1 className="website-title pt-5 !-pt-2">
 									Students Registered in Class 1
 								</h1>
-								<StudentTable data={studentData} />
+								<StudentTable classId={selectedClass} />
 							</div>
 						</div>
 						<input
@@ -101,7 +99,6 @@ export default function Dashboard({
 					</div>
 				</div>
 				<div className="bg-base-100 outline outline-1 outline-[#CAC8C5] w-[48.5%] ml-[0.5%] h-[90vh] rounded-xl">
-					
 					<a
 						className={
 							"btn btn-shadow ml-[5%] h-[10%] w-[90%] !flex !flex-row !justify-center !items-center text-3xl mt-5" +
@@ -112,7 +109,11 @@ export default function Dashboard({
 						<Icon.Outlined className="!w-10 !h-10" name="UserGroup" />
 						Start Attendance
 					</a>
-					{classes[0] === undefined && <p className="ml-10 mt-2 opacity-50">Cannot start attendance session without a class.</p>}
+					{classes[0] === undefined && (
+						<p className="ml-10 mt-2 opacity-50">
+							Cannot start attendance session without a class.
+						</p>
+					)}
 					<div className="ml-[5%] mt-5">
 						<h1 className="website-title !text-2xl !text-secondary-content">
 							Configure Your Attendance Session:

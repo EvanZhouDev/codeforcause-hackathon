@@ -1,8 +1,19 @@
 import Icon from "@/components/Icon";
-import toast from 'react-hot-toast';
+import { createClient } from "@/utils/supabase/client";
+import toast from "react-hot-toast";
 
 // import { getStudentData } from "../actions";
-export default async function StudentTable({ data }) {
+export default async function StudentTable({ classId }) {
+	const client = createClient();
+	const res = await client
+		.from("students")
+		.select("student (username, email)")
+		.eq("class", classId);
+	console.log("kayl", res.data[0].student, res, res.error);
+	const data = res.data.map((x) => {
+		return { email: x.student.email, name: x.student.username };
+	});
+	console.log(data);
 	return (
 		<div className="overflow-x-auto">
 			<table className="table mt-5">
@@ -28,7 +39,7 @@ export default async function StudentTable({ data }) {
 								</div>
 							</td>
 							<td>{student.email}</td>
-							<td>{student.attendence}</td>
+							<td>{student?.attendence}</td>
 							<th>
 								<div className="flex">
 									<button className="ml-2 btn btn-secondary">
@@ -37,9 +48,12 @@ export default async function StudentTable({ data }) {
 											name="InformationCircle"
 										/>
 									</button>
-									<button className="ml-2 btn btn-secondary" onClick={() => {
-										toast("hi")
-									}}>
+									<button
+										className="ml-2 btn btn-secondary"
+										onClick={() => {
+											toast("hi");
+										}}
+									>
 										<Icon.Outlined className="w-4 h-4" name="Trash" />
 									</button>
 								</div>

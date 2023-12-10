@@ -2,8 +2,9 @@
 import { QRCodeSVG } from "qrcode.react";
 import StudentTable from "./StudentTable";
 import Icon from "@/components/Icon";
+import { addStudent } from "../actions";
 
-export default function RegisterStudent() {
+export default function RegisterStudent({ classId }) {
 	return (
 		<>
 			<button
@@ -15,13 +16,13 @@ export default function RegisterStudent() {
 			</button>
 			<dialog id="my_modal_1" className="modal">
 				<div className="modal-box bg-secondary min-w-[90vw]">
-					<div class="flex w-full">
-						<div class="flex h-[75vh] w-[30vw] flex-grow card bg-neutral rounded-box place-items-center flex-col items-center justify-center">
+					<div className="flex w-full">
+						<div className="flex h-[75vh] w-[30vw] flex-grow card bg-neutral rounded-box place-items-center flex-col items-center justify-center">
 							<p className="text-3xl mt-2 font text-primary mb-10">
 								Scan code to join the class.
 							</p>
 							<QRCodeSVG
-								value="http://localhost:3000/attend?code=1234"
+								value={`http://localhost:3000/join?class=${classId}`}
 								renderAs="svg"
 								size="1000"
 								className="w-3/5 h-min bg-black mb-5"
@@ -31,29 +32,23 @@ export default function RegisterStudent() {
 								them to your class.
 							</div>
 						</div>
-						<div class="divider divider-horizontal">OR</div>
-						<div class="flex h-[75vh] w-[30vw] flex-grow card bg-neutral rounded-box place-items-center">
-							<div className="flex justify-stretch w-full items-center p-10">
+						<div className="divider divider-horizontal">OR</div>
+						<div className="flex h-[75vh] w-[30vw] flex-grow card bg-neutral rounded-box place-items-center">
+							<form
+								className="flex justify-stretch w-full items-center p-10"
+								action={addStudent.bind(null, classId)}
+							>
 								<label className="label">
 									<span className="text-base label-text">Student Email: </span>
 								</label>
 								<input
-									type="text"
+									name="email"
+									type="email"
 									className="w-full input input-bordered border-primary form-input"
 								/>
 								<button className="btn ml-3 btn-filled">Add Student</button>
-							</div>
-							<StudentTable
-								data={[
-									{
-										email: "bob.joe@gmail.com",
-										deleteMe: () => {
-											console.log("Bob deleted");
-										},
-										attendence: "10/13 classes", // TODO and implement the status codes... get that constnats file
-									},
-								]}
-							/>
+							</form>
+							<StudentTable classId={classId} />
 						</div>
 					</div>
 					<div className="modal-action">
