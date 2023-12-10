@@ -1,14 +1,27 @@
 "use client";
 import Icon from "@/components/Icon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ClassTable from "./ClassTable";
 import StudentTable from "./StudentTable";
 
-export default async function Dashboard({
+// import { createClass, getStudentData } from "../actions";
+import NewClass from "./NewClass";
+import { getStudentData } from "../actions";
+import { createClient } from "@/utils/supabase/client";
+export default function Dashboard({
 	classes,
-}: { classes: { name: string }[] }) {
-	const [selectedClass, setSelectedClass] = useState(classes[0]?.name);
-	// const [studentData, setStudentData]
+}: { classes: { name: string; id: string }[] }) {
+	const supabase = createClient();
+	const [selectedClass, setSelectedClass] = useState(classes[0].id);
+	const [studentData, setStudentData] = useState([
+		{
+			email: "bob.joe@gmail.com",
+			deleteMe: () => {
+				console.log("Bob deleted");
+			},
+			attendence: "10/13 classes", // TODO and implement the status codes... get that constnats file
+		},
+	]);
 	return (
 		<div className="w-fill h-screen bg-secondary overflow-hidden">
 			{/* class list and management */}
@@ -34,36 +47,37 @@ export default async function Dashboard({
 									<select
 										className="select select-bordered w-full"
 										value={selectedClass}
-										onChange={(event) => {
+										onChange={async (event) => {
+											console.log("asdfsdfsa");
 											setSelectedClass(event.target.value);
+
+											const client = createClient();
+											const res = await client
+												.from("students")
+												.select("profiles (username)")
+												.eq("class", event.target.value);
+											console.log(res); // rls issues?
+											setStudentData(res.data);
 										}}
 									>
-										<option disabled selected>
+										<option disabled defaultValue={""}>
 											Pick a class...
 										</option>
 										{classes.map((x) => (
-											<option>{x.name}</option>
+											<option value={x.id}>{x.name}</option>
 										))}
 									</select>
+									{/* <form action={registerStudent}> */}
 									<button className="ml-2 btn btn-ghost">
 										<Icon.Outlined name="User" />
 										Register Students
 									</button>
+									{/* </form> */}
 								</div>
 								<h1 className="website-title pt-5 !-pt-2">
 									Students Registered in Class 1
 								</h1>
-								<StudentTable
-									data={[
-										{
-											email: "bob.joe@gmail.com",
-											deleteMe: () => {
-												console.log("Bob deleted");
-											},
-											attendence: "10/13 classes", // TODO and implement the status codes... get that constnats file
-										},
-									]}
-								/>
+								<StudentTable data={studentData} />
 							</div>
 						</div>
 						<input
@@ -80,13 +94,10 @@ export default async function Dashboard({
 							<div className="min-h-[calc(90vh-78px)]">
 								<div className="flex flex-row justify-between items-center">
 									<h1 className="website-title">All of Your Classes: </h1>
-									<button className="ml-2 btn btn-ghost">
-										<Icon.Outlined name="User" />
-										Create Class
-									</button>
+									<NewClass />
 								</div>
 
-								<ClassTable />
+								<ClassTable classes={classes} />
 							</div>
 						</div>
 					</div>

@@ -13,7 +13,7 @@ export default async function Page() {
 	}
 	const { data: classes, error } = await client
 		.from("classes")
-		.select("name")
+		.select("name, id")
 		.eq("admin", (await client.auth.getUser()).data.user!.id);
 	if (error) {
 		console.log(error);

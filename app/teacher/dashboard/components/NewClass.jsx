@@ -1,6 +1,16 @@
 "use client";
 import Icon from "@/components/Icon";
+import { useRef, useState } from "react";
+import { createClass } from "../actions";
 export default function NewClass() {
+	const [className, setClassName] = useState("");
+	const handle = async () => {
+		const { data, error } = await createClass(className);
+		if (error == null) {
+			modal.current.close();
+		}
+	};
+	const modal = useRef();
 	return (
 		<>
 			<button
@@ -8,9 +18,9 @@ export default function NewClass() {
 				onClick={() => document.getElementById("my_modal_1").showModal()}
 			>
 				<Icon.Outlined name="User" onclick="my_modal_1.showModal()" />
-				Create Classes
+				Create Class
 			</button>
-			<dialog id="my_modal_1" className="modal">
+			<dialog ref={modal} id="my_modal_1" className="modal">
 				<div className="modal-box">
 					<h3 className="font-bold text-lg">Create a Class</h3>
 					<p className="py-4">
@@ -23,6 +33,11 @@ export default function NewClass() {
 						</label>
 						<input
 							type="text"
+							name="className"
+							value={className}
+							onChange={(event) => {
+								setClassName(event.target.value);
+							}}
 							className="w-full input input-bordered border-primary form-input"
 						/>
 					</div>
@@ -33,10 +48,15 @@ export default function NewClass() {
 					<div className="modal-action">
 						<form method="dialog">
 							<button className="btn">Close</button>
-							<button className="btn btn-primary ml-3">Create Class</button>
+							<button className="btn btn-primary ml-3" formAction={handle}>
+								Create Class
+							</button>
 						</form>
 					</div>
 				</div>
+				<form method="dialog" className="modal-backdrop">
+					<button>Close</button>
+				</form>
 			</dialog>
 		</>
 	);
