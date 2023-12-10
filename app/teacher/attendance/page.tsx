@@ -14,7 +14,7 @@ export default async function Index({
 	if ((await client.auth.getUser()).data?.user?.id == null) {
 		return redirect("/");
 	}
-	async function handle() {
+	async function handle(id) {
 		"use server";
 		const cookieStore = cookies();
 		const client = createClient(cookieStore);
@@ -24,7 +24,7 @@ export default async function Index({
 		const { data, error } = await client
 			.from("codes")
 			.update({ expired: true })
-			.eq("id", data[0].id)
+			.eq("id", id)
 			.select();
 		console.log("ed", data, error);
 		return redirect("/teacher/dashboard");
@@ -66,7 +66,7 @@ export default async function Index({
 				<div className="bg-base-100 outline outline-1 outline-[#CAC8C5] w-[48.5%] ml-[0.5%] h-[90vh] rounded-xl">
 					<div className="flex flex-row justify-between px-4 mt-4">
 						<h1 className="website-title !text-5xl">Students</h1>
-						<form action={handle}>
+						<form action={handle.bind(null, data[0].id)}>
 							<button className="btn btn-primary">End Session</button>
 						</form>
 					</div>
