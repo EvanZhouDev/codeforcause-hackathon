@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar.jsx";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
+import { Toaster } from 'react-hot-toast';
 
 const defaultUrl = process.env.VERCEL_URL
 	? `https://${process.env.VERCEL_URL}`
@@ -22,6 +23,7 @@ export default function RootLayout({
 			<body>
 				<Navbar />
 				{children}
+				<Toaster />
 			</body>
 		</html>
 	);

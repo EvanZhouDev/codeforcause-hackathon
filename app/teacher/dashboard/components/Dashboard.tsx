@@ -11,7 +11,9 @@ import { getStudentData } from "../actions";
 import { createClient } from "@/utils/supabase/client";
 export default function Dashboard({
 	classes,
-}: { classes: { name: string; id: string }[] }) {
+}: {
+	classes: { name: string; id: string }[];
+}) {
 	const supabase = createClient();
 	const [selectedClass, setSelectedClass] = useState(classes[0]?.id);
 	const [studentData, setStudentData] = useState([
@@ -99,13 +101,18 @@ export default function Dashboard({
 					</div>
 				</div>
 				<div className="bg-base-100 outline outline-1 outline-[#CAC8C5] w-[48.5%] ml-[0.5%] h-[90vh] rounded-xl">
+					
 					<a
-						className="btn btn-shadow ml-[5%] h-[10%] w-[90%] !flex !flex-row !justify-center !items-center text-3xl mt-5"
+						className={
+							"btn btn-shadow ml-[5%] h-[10%] w-[90%] !flex !flex-row !justify-center !items-center text-3xl mt-5" +
+							(classes[0] === undefined ? " btn-disabled" : "")
+						}
 						href={`/teacher/attendance?classId=${selectedClass}`}
 					>
 						<Icon.Outlined className="!w-10 !h-10" name="UserGroup" />
 						Start Attendance
 					</a>
+					{classes[0] === undefined && <p className="ml-10 mt-2 opacity-50">Cannot start attendance session without a class.</p>}
 					<div className="ml-[5%] mt-5">
 						<h1 className="website-title !text-2xl !text-secondary-content">
 							Configure Your Attendance Session:

@@ -1,4 +1,6 @@
 import Icon from "@/components/Icon";
+import toast from 'react-hot-toast';
+
 // import { getStudentData } from "../actions";
 export default async function StudentTable({ data }) {
 	return (
@@ -35,7 +37,9 @@ export default async function StudentTable({ data }) {
 											name="InformationCircle"
 										/>
 									</button>
-									<button className="ml-2 btn btn-secondary">
+									<button className="ml-2 btn btn-secondary" onClick={() => {
+										toast("hi")
+									}}>
 										<Icon.Outlined className="w-4 h-4" name="Trash" />
 									</button>
 								</div>
