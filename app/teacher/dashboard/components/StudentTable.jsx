@@ -42,18 +42,25 @@ export default async function StudentTable({ classId }) {
 							<td>{student?.attendence}</td>
 							<th>
 								<div className="flex">
-									<button className="ml-2 btn btn-secondary">
+									<button onClick={() => document.getElementById('my_modal_' + student.email).showModal()} className="ml-2 btn btn-secondary">
 										<Icon.Outlined
 											className="w-4 h-4"
 											name="InformationCircle"
 										/>
 									</button>
-									<button
-										className="ml-2 btn btn-secondary"
-										onClick={() => {
-											toast("hi");
-										}}
-									>
+									<dialog id={"my_modal_" + student.email} class="modal">
+										<div class="modal-box">
+											<h3 class="font-bold text-lg">Student Name: {student.name}</h3>
+											<p class="py-4 mt-5">The Email associated with this class is {student.email}.</p>
+											<p class="py-4 font-normal">Attendance: {student.attendance}</p>
+											<div class="modal-action">
+												<form method="dialog">
+													<button class="btn">Close</button>
+												</form>
+											</div>
+										</div>
+									</dialog>
+									<button className="ml-2 btn btn-secondary">
 										<Icon.Outlined className="w-4 h-4" name="Trash" />
 									</button>
 								</div>

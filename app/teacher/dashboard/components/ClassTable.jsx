@@ -25,12 +25,24 @@ export default function ClassTable({ classes }) {
 							<td>10/13</td>
 							<th>
 								<div className="flex">
-									<button className="ml-2 btn btn-secondary">
+									<button className="ml-2 btn btn-secondary" onClick={() => document.getElementById('my_modal_' + klass.id).showModal()}>
 										<Icon.Outlined
 											className="w-4 h-4"
 											name="InformationCircle"
 										/>
 									</button>
+									<dialog id={"my_modal_" + klass.id} class="modal">
+										<div class="modal-box">
+											<h3 class="font-bold text-lg">Class Name: "{klass.name}"</h3>
+											<p class="py-4 mt-5">The ID associated with this class is {klass.id}.</p>
+											<p class="py-4 font-normal">There are 0 students in this class currently.</p>
+											<div class="modal-action">
+												<form method="dialog">
+													<button class="btn">Close</button>
+												</form>
+											</div>
+										</div>
+									</dialog>
 									<button
 										className="ml-2 btn btn-secondary"
 										onClick={async () => {

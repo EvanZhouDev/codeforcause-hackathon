@@ -26,7 +26,7 @@ export default function NewClass() {
 					<h3 className="font-bold text-lg">Create a Class</h3>
 					<p className="py-4">
 						First, name your class. Afterwards, go to Mange Students and hit
-						Enroll Students to continue.
+						Register Students to continue.
 					</p>
 					<div>
 						<label className="label">
