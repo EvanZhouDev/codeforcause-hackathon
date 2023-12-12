@@ -1,4 +1,9 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
+# CH20
+
+This project was built by [EvanZhouDev](https://github.com/EvanZhouDev) and [ThatXliner](https://github.com/ThatXliner) during the 12-hour [Code For Cause 2023 Hackathon](https://codeforcause.devpost.com), for the BISV DECA Attendance track. We won [first place overall](https://devpost.com/software/deca-attendance). The last commit made during the Hackathon [can be found here](https://github.com/EvanZhouDev/codeforcause-hackathon/commit/04ca898acd6f1993f3b03aa4a287b89114955d32).
+
+Since the DECA team at BASIS Independent Silicon Valley plan to actually use the app (and ThatXliner's [FRC Team 3256](https://github.com/Team3256) might as well), further development will be done at [EvanZhouDev/Zyma](https://github.com/EvanZhouDev/zyma).
+<!-- <a href="https://demo-nextjs-with-supabase.vercel.app/">
   <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
   <h1 align="center">Next.js and Supabase Starter Kit</h1>
 </a>
@@ -90,4 +95,4 @@ Please file feedback and issues over on the [Supabase GitHub org](https://github
 
 - [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
 - [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs) -->
