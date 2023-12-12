@@ -20,7 +20,7 @@ export default async function Page({ searchParams }) {
 				code_used: searchParams.code,
 			},
 		])
-		.select();
+		.select("status");
 	console.log(data, error);
 
 	return (
@@ -29,7 +29,11 @@ export default async function Page({ searchParams }) {
 				<div className="max-w-md">
 					<h1 className="text-5xl font-bold">You're all done.</h1>
 					<p className="mt-5">Joined with code "{searchParams.code}"</p>
-					<Excuse code={searchParams.code} user={studentId} />
+					<Excuse
+						code={searchParams.code}
+						user={studentId}
+						status={data[0].status}
+					/>
 				</div>
 			</div>
 		</div>

@@ -3,12 +3,11 @@ import Icon from "@/components/Icon";
 import { useState } from "react";
 import { updateExcuse } from "../actions";
 
-export default function Excuse({ code, user }) {
-	const [availableToChoose, setAvailableToChoose] = useState(true);
-	const [excuse, setExcuse] = useState(0);
+export default function Excuse({ code, user, status }) {
+	const [excuse, setExcuse] = useState(status);
 	return (
 		<div className="flex flex-col justify-stretch">
-			{availableToChoose ? (
+			{status == excuse ? (
 				<>
 					<p className="py-6 max-w">
 						Not actually here? Select a reason and change your status.
@@ -20,7 +19,7 @@ export default function Excuse({ code, user }) {
 							setExcuse(event.target.value);
 						}}
 					>
-						<option disabled defaultValue={0}>
+						<option disabled defaultValue={status}>
 							Pick a reason for absence...
 						</option>
 						<option value={1}>Doctor's Appointment</option>
@@ -35,7 +34,7 @@ export default function Excuse({ code, user }) {
 								setAvailableToChoose(false);
 							}}
 							className="ml-2 mt-5 btn btn-filled"
-							disabled={excuse == 0}
+							disabled={excuse === status}
 						>
 							<Icon.Outlined name="ArrowRightOnRectangle" />
 							Mark me as absent
@@ -43,7 +42,9 @@ export default function Excuse({ code, user }) {
 					</form>
 				</>
 			) : (
-				<div className="mt-10 bg-secondary py-5 rounded">Successfully marked your absence.</div>
+				<div className="mt-10 bg-secondary py-5 rounded">
+					Successfully marked your absence.
+				</div>
 			)}
 			<p className="py-6 max-w opacity-50">It is safe to close this tab.</p>
 		</div>
