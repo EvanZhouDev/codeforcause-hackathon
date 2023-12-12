@@ -1,4 +1,3 @@
-import { ATTENDENCE_STATUS_PRESENT } from "@/components/constants";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";

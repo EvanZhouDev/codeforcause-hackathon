@@ -1,7 +1,7 @@
 "use server";
 
-import { createClient } from "@/utils/supabase/server";
 import { createClient as createBrowserClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 
 export async function getStudentData(classID: string) {

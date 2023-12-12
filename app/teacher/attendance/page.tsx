@@ -43,6 +43,7 @@ export default async function Index({
 			.from("codes")
 			.insert([{ class: searchParams.classId }])
 			.select();
+		console.log(data, _);
 		code = data![0].code;
 		codeId = data![0].id;
 	} else {

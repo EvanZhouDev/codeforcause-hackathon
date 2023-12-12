@@ -1,8 +1,8 @@
 "use client";
-import { QRCodeSVG } from "qrcode.react";
-import StudentTable from "./StudentTable";
 import Icon from "@/components/Icon";
+import { QRCodeSVG } from "qrcode.react";
 import { addStudent } from "../actions";
+import StudentTable from "./StudentTable";
 
 export default function RegisterStudent({ classId }) {
 	return (

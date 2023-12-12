@@ -45,8 +45,8 @@ module.exports = {
 					"secondary-content": "#DDE6CD",
 					neutral: "#22261D",
 					"base-100": "#1B1C18",
-				}
-			}
+				},
+			},
 		],
 	},
 };
