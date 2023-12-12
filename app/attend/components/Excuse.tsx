@@ -7,7 +7,7 @@ export default function Excuse({ code, user, status }) {
 	const [excuse, setExcuse] = useState(status);
 	return (
 		<div className="flex flex-col justify-stretch">
-			{status == excuse ? (
+			{status === excuse ? (
 				<>
 					<p className="py-6 max-w">
 						Not actually here? Select a reason and change your status.

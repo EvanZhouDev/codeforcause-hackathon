@@ -45,7 +45,7 @@ export default async function StudentTable({ classId }) {
 									<button
 										onClick={() =>
 											document
-												.getElementById("my_modal_" + student.email)
+												.getElementById(`my_modal_${student.email}`)
 												.showModal()
 										}
 										className="ml-2 btn btn-secondary"
@@ -55,7 +55,7 @@ export default async function StudentTable({ classId }) {
 											name="InformationCircle"
 										/>
 									</button>
-									<dialog id={"my_modal_" + student.email} class="modal">
+									<dialog id={`my_modal_${student.email}`} class="modal">
 										<div class="modal-box">
 											<h3 class="font-bold text-lg">
 												Student Name: {student.name}

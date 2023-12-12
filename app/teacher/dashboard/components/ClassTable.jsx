@@ -29,7 +29,7 @@ export default function ClassTable({ classes }) {
 										className="ml-2 btn btn-secondary"
 										onClick={() =>
 											document
-												.getElementById("my_modal_" + klass.id)
+												.getElementById(`my_modal_${klass.id}`)
 												.showModal()
 										}
 									>
@@ -38,7 +38,7 @@ export default function ClassTable({ classes }) {
 											name="InformationCircle"
 										/>
 									</button>
-									<dialog id={"my_modal_" + klass.id} class="modal">
+									<dialog id={`my_modal_${klass.id}`} class="modal">
 										<div class="modal-box">
 											<h3 class="font-bold text-lg">
 												Class Name: "{klass.name}"
