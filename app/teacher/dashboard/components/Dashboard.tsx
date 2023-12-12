@@ -2,13 +2,13 @@
 import Icon from "@/components/Icon";
 import { useEffect, useState } from "react";
 import ClassTable from "./ClassTable";
-import StudentTable from "./StudentTable";
 import RegisterStudent from "./RegisterStudent";
+import StudentTable from "./StudentTable";
 
+import { createClient } from "@/utils/supabase/client";
+import { getStudentData } from "../actions";
 // import { createClass, getStudentData } from "../actions";
 import NewClass from "./NewClass";
-import { getStudentData } from "../actions";
-import { createClient } from "@/utils/supabase/client";
 export default function Dashboard({
 	classes,
 }: { classes: { name: string; id: number }[] }) {
@@ -16,15 +16,15 @@ export default function Dashboard({
 	const [selectedClass, setSelectedClass] = useState(0);
 	const classId = classes[selectedClass].id;
 	const className = classes[selectedClass].name;
-	const [studentData, setStudentData] = useState([
-		{
-			email: "bob.joe@gmail.com",
-			deleteMe: () => {
-				console.log("Bob deleted");
-			},
-			attendence: "10/13 classes", // TODO and implement the status codes... get that constnats file
-		},
-	]);
+	// const [studentData, setStudentData] = useState([
+	// 	{
+	// 		email: "bob.joe@gmail.com",
+	// 		deleteMe: () => {
+	// 			console.log("Bob deleted");
+	// 		},
+	// 		attendence: "10/13 classes", // TODO and implement the status codes... get that constnats file
+	// 	},
+	// ]);
 	return (
 		<div className="w-fill h-screen bg-secondary overflow-hidden">
 			{/* class list and management */}
@@ -51,16 +51,9 @@ export default function Dashboard({
 										className="select select-bordered w-full"
 										value={selectedClass}
 										onChange={async (event) => {
+											const newClassIndex = parseInt(event.target.value);
 											console.log("asdfsdfsa");
-											setSelectedClass(parseInt(event.target.value));
-
-											const client = createClient();
-											const res = await client
-												.from("students")
-												.select("profiles (username)")
-												.eq("class", classes[event.target.value]);
-											console.log(res); // rls issues?
-											setStudentData(res.data);
+											setSelectedClass(newClassIndex);
 										}}
 									>
 										<option disabled defaultValue={""}>
@@ -102,11 +95,10 @@ export default function Dashboard({
 				</div>
 				<div className="bg-base-100 outline outline-1 outline-[#CAC8C5] w-[48.5%] ml-[0.5%] h-[90vh] rounded-xl">
 					<a
-						className={
-							"btn btn-shadow ml-[5%] h-[10%] w-[90%] !flex !flex-row !justify-center !items-center text-3xl mt-5" +
-							(classes[0] === undefined ? " btn-disabled" : "")
-						}
-						href={`/teacher/attendance?classId=${selectedClass}`}
+						className={`btn btn-shadow ml-[5%] h-[10%] w-[90%] !flex !flex-row !justify-center !items-center text-3xl mt-5 ${
+							classes[0] === undefined ? " btn-disabled" : ""
+						}`}
+						href={`/teacher/attendance?classId=${classId}`}
 					>
 						<Icon.Outlined className="!w-10 !h-10" name="UserGroup" />
 						Start Attendance
